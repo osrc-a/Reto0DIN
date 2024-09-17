@@ -6,6 +6,7 @@
 package DataAccessTier;
 
 import Model.User;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -15,8 +16,29 @@ public class FileUserDataAccessor implements DataAccessible {
 
     @Override
     public User getUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Crea una instancia del objeto User
+        User user = new User();
+
+        // Obtén el ResourceBundle
+        ResourceBundle bundle = ResourceBundle.getBundle("resources.readFile");
+
+        // Establece los valores en el objeto User
+        user.setuDni(bundle.getString("uDni"));
+        user.setNombre(bundle.getString("nombre"));
+        user.setApellido(bundle.getString("apellido"));
+        user.setUsuario(bundle.getString("usuario"));
+        user.setContraseina(bundle.getString("contraseina"));
         
+        // Convertir de cadena a entero
+        try {
+            int edad = Integer.parseInt(bundle.getString("edad"));
+            user.setEdad(edad);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        
+        return user;
     }
+
     
 }
