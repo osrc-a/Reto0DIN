@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -19,12 +20,26 @@ import javafx.scene.control.Label;
 public class UserDataWindowController implements Initializable {
     
     @FXML
-    private Label label;
+    private TextField txtPrueba;
+    
+    @FXML
+    private TextField txtName;
+
+    @FXML
+    private TextField txtSurname;
+
+    @FXML
+    private TextField txtUser;
+
+    @FXML
+    private TextField txtPsswd;
+
+    @FXML
+    private TextField txtAge;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("Hello World!");
     }
     
     @Override
