@@ -5,8 +5,13 @@
  */
 package UserInterfaceTier;
 
+import DataAccessTier.DataAccessible;
+import DataAccessTier.FileUserDataAccessor;
+import DataAccessTier.UserManagerFactory;
+import Model.User;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +23,11 @@ import javafx.scene.control.TextField;
  * @author oscar
  */
 public class UserDataWindowController implements Initializable {
+    
+DataAccessible dataAccessible;
+UserManagerFactory factory;
+
+    User user;
     
     @FXML
     private TextField txtPrueba;
@@ -39,7 +49,10 @@ public class UserDataWindowController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
+        dataAccessible = (DataAccessible) factory.accederADatos();
+        user = dataAccessible.getUser();
+        txtPrueba.setText(user.getuDni());
+        //txtName.setText(user.getNombre());
     }
     
     @Override
