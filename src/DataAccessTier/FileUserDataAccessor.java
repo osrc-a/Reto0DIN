@@ -35,7 +35,7 @@ public class FileUserDataAccessor implements DataAccessible {
             int edad = Integer.parseInt(bundle.getString("edad"));
             user.setEdad(edad);
         } catch (NumberFormatException e) {
-            Logger.getLogger("UserInterfaceTier").
+            Logger.getLogger("DataAccessTier").
                   severe(e.getLocalizedMessage());
         }
         

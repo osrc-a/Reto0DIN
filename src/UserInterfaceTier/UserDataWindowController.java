@@ -20,6 +20,8 @@ import javafx.scene.control.TextField;
  *
  * @author oscar
  */
+
+//Clase que se encarga de gestiona donde se muestra la informacion del usuario
 public class UserDataWindowController implements Initializable {
     
 DataAccessible dataAccessible;
@@ -45,6 +47,7 @@ UserManagerFactory factory;
     @FXML
     private TextField txtAge;
     
+    //Evento que se ejecuta cuando el usuario presiona el boton y rellena los campos de texto con la informacion del usuario
     @FXML
     private void handleButtonAction(ActionEvent event) {
         try{

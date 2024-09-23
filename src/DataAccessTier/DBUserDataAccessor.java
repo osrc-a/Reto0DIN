@@ -19,11 +19,13 @@ import java.util.logging.Logger;
  */
 public class DBUserDataAccessor implements DataAccessible {
 
+    //Este metodo se encarga de hacer la conexion con la base de datos
     private Connection conectar() throws SQLException {
         // Configura la conexión a la base de datos
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/myusersdb", "root", "abcd*1234");
     }
 
+    //Este metodo se encarga de sacar la informacion de la base de datos e introducirla en un objeto User que luego devolvera
     @Override
     public User getUser() {
         User user = null;
@@ -41,7 +43,7 @@ public class DBUserDataAccessor implements DataAccessible {
                 user.setEdad(rs.getInt("edad"));
             }
         } catch(SQLException e){
-            Logger.getLogger("UserInterfaceTier").
+            Logger.getLogger("DataAccessTier").
                   severe(e.getLocalizedMessage());
         }
         

@@ -5,15 +5,14 @@
  */
 package DataAccessTier;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
  *
  * @author oscar
  */
+
+//Clase que se encarga de leer el fichero de lectura y en base a lo que lea elige de donde sacar la informacion
 public class UserManagerFactory {
     
     public static DataAccessible accederADatos(){

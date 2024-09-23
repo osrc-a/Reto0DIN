@@ -11,6 +11,8 @@ import Model.User;
  *
  * @author oscar
  */
+
+//Interfaz general para las recogidas de datos
 public interface DataAccessible {
     
    public User getUser() throws Exception;

@@ -9,6 +9,9 @@ package Model;
  *
  * @author oscar
  */
+
+//Clase que encapsula la informacion del usuario
+
 public class User {
 
     private String uDni;
