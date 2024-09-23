@@ -23,9 +23,6 @@ import javafx.scene.control.TextField;
 
 //Clase que se encarga de gestiona donde se muestra la informacion del usuario
 public class UserDataWindowController implements Initializable {
-    
-DataAccessible dataAccessible;
-UserManagerFactory factory;
 
     User user;
     
