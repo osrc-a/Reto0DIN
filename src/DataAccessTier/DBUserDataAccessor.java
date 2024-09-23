@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,7 +41,8 @@ public class DBUserDataAccessor implements DataAccessible {
                 user.setEdad(rs.getInt("edad"));
             }
         } catch(SQLException e){
-            
+            Logger.getLogger("UserInterfaceTier").
+                  severe(e.getLocalizedMessage());
         }
         
         return user;

@@ -7,6 +7,7 @@ package DataAccessTier;
 
 import Model.User;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,7 +35,8 @@ public class FileUserDataAccessor implements DataAccessible {
             int edad = Integer.parseInt(bundle.getString("edad"));
             user.setEdad(edad);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            Logger.getLogger("UserInterfaceTier").
+                  severe(e.getLocalizedMessage());
         }
         
         return user;

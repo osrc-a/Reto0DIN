@@ -6,7 +6,6 @@
 package UserInterfaceTier;
 
 import DataAccessTier.DataAccessible;
-import DataAccessTier.FileUserDataAccessor;
 import DataAccessTier.UserManagerFactory;
 import Model.User;
 import java.net.URL;
@@ -15,7 +14,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -49,10 +47,18 @@ UserManagerFactory factory;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        dataAccessible = (DataAccessible) factory.accederADatos();
-        user = dataAccessible.getUser();
+        try{
+        User user = UserManagerFactory.accederADatos().getUser();
         txtPrueba.setText(user.getuDni());
-        //txtName.setText(user.getNombre());
+        txtName.setText(user.getNombre());
+        txtSurname.setText(user.getApellido());
+        txtUser.setText(user.getUsuario());
+        txtPsswd.setText(user.getContraseina());
+        txtAge.setText(user.getEdad().toString());
+        } catch(Exception e){
+          Logger.getLogger("UserInterfaceTier").
+                  severe(e.getLocalizedMessage());
+        }
     }
     
     @Override
