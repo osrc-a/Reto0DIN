@@ -17,15 +17,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 /**
- *
+ * Controlador de la ventana que gestiona la presentación de la información del usuario.
+ * Implementa la interfaz {@link Initializable} para la inicialización de la interfaz gráfica.
+ * 
  * @author oscar
  */
-
-//Clase que se encarga de gestiona donde se muestra la informacion del usuario
 public class UserDataWindowController implements Initializable {
 
-    User user;
-    
+    private User user;
+
     @FXML
     private TextField txtPrueba;
     
@@ -44,26 +44,30 @@ public class UserDataWindowController implements Initializable {
     @FXML
     private TextField txtAge;
     
-    //Evento que se ejecuta cuando el usuario presiona el boton y rellena los campos de texto con la informacion del usuario
+    /**
+     * Maneja el evento cuando se presiona el botón.
+     * Rellena los campos de texto con la información del usuario recuperada.
+     * 
+     * @param event el evento de acción del botón
+     */
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        try{
-        User user = UserManagerFactory.accederADatos().getUser();
-        txtPrueba.setText(user.getuDni());
-        txtName.setText(user.getNombre());
-        txtSurname.setText(user.getApellido());
-        txtUser.setText(user.getUsuario());
-        txtPsswd.setText(user.getContraseina());
-        txtAge.setText(user.getEdad().toString());
-        } catch(Exception e){
-          Logger.getLogger("UserInterfaceTier").
-                  severe(e.getLocalizedMessage());
+        try {
+            User user = UserManagerFactory.accederADatos().getUser();
+            txtPrueba.setText(user.getuDni());
+            txtName.setText(user.getNombre());
+            txtSurname.setText(user.getApellido());
+            txtUser.setText(user.getUsuario());
+            txtPsswd.setText(user.getContraseina());
+            txtAge.setText(user.getEdad().toString());
+        } catch (Exception e) {
+            Logger.getLogger("UserInterfaceTier").severe(e.getLocalizedMessage());
         }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // Método llamado al inicializar el controlador
     }    
-    
 }
+

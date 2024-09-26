@@ -6,7 +6,7 @@
 package Model;
 
 /**
- *
+ *Esta clase contiene información personal de un usuario
  * @author oscar
  */
 

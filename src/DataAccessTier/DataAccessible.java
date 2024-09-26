@@ -8,13 +8,19 @@ package DataAccessTier;
 import Model.User;
 
 /**
- *
+ * Interfaz general para el acceso a datos de usuario.
+ * Proporciona métodos para recuperar información del usuario.
+ * 
  * @author oscar
  */
-
-//Interfaz general para las recogidas de datos
 public interface DataAccessible {
-    
-   public User getUser() throws Exception;
-    
+
+    /**
+     * Recupera un objeto {@link User} con la información del usuario.
+     * 
+     * @return un objeto User que representa al usuario
+     * @throws Exception si ocurre un error durante la recuperación de datos
+     */
+    public User getUser() throws Exception;
 }
+

@@ -11,29 +11,43 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase responsable de acceder a los datos del usuario desde la base de datos.
+ * Implementa la interfaz {@link DataAccessible}.
+ * 
  * @author oscar
  */
 public class DBUserDataAccessor implements DataAccessible {
+    
+    private static final Logger LOGGER = Logger.getLogger(DBUserDataAccessor.class.getName());
 
-    //Este metodo se encarga de hacer la conexion con la base de datos
+    /**
+     * Establece una conexión con la base de datos.
+     * 
+     * @return la conexión a la base de datos
+     * @throws SQLException si ocurre un error al conectar
+     */
     private Connection conectar() throws SQLException {
         // Configura la conexión a la base de datos
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/myusersdb", "root", "abcd*1234");
     }
 
-    //Este metodo se encarga de sacar la informacion de la base de datos e introducirla en un objeto User que luego devolvera
+    /**
+     * Obtiene la información del usuario desde la base de datos y la mapea a un objeto {@link User}.
+     * 
+     * @return un objeto User con los datos del usuario, o null si no se encuentra
+     */
     @Override
     public User getUser() {
         User user = null;
 
         try (Connection conn = conectar();
              PreparedStatement ps = conn.prepareStatement("Select * FROM usuario;")) {
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
                 user = new User();
                 user.setuDni(rs.getString("uDni"));
                 user.setNombre(rs.getString("nombre"));
@@ -42,13 +56,11 @@ public class DBUserDataAccessor implements DataAccessible {
                 user.setContraseina(rs.getString("contraseina"));
                 user.setEdad(rs.getInt("edad"));
             }
-        } catch(SQLException e){
-            Logger.getLogger("DataAccessTier").
-                  severe(e.getLocalizedMessage());
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error al obtener el usuario de la base de datos", e);
         }
         
         return user;
-
     }
-
 }
+
