@@ -5,7 +5,6 @@
  */
 package UserInterfaceTier;
 
-import DataAccessTier.DataAccessible;
 import DataAccessTier.UserManagerFactory;
 import Model.User;
 import java.net.URL;
@@ -23,8 +22,6 @@ import javafx.scene.control.TextField;
  * @author oscar
  */
 public class UserDataWindowController implements Initializable {
-
-    private User user;
 
     @FXML
     private TextField txtPrueba;
